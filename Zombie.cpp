@@ -10,9 +10,7 @@ using namespace std;
 int Zombie::maxHp = 10;
 int Zombie::walkTime = 1;
 
-Zombie::Zombie(int y): Unit(LEFT + WIDTH - 1, y + TOP, Zombie::maxHp, 'Z', true) {
-    this->bindToScreen();
-};
+Zombie::Zombie(int y): Unit(y, WIDTH - 1, Zombie::maxHp, 'Z', true) {};
 
 void Zombie::walk() {
     x--;
@@ -26,12 +24,15 @@ void Zombie::live() {
         if (x > LEFT) {
             if (STEP % walkTime == 0) walk();
         } else {
-            hp = 0;
-            dropFromScreen();
             Drawer::moveToCenter();
             printw("  YOU LOSE");
             Drawer::moveToCenter();
             refresh();
         }
     }
+}
+
+void Zombie::die() {
+    dropFromScreen();
+    delete this;
 }

@@ -3,7 +3,11 @@
 
 class PeaBullet: public Unit {
     public:
-        PeaBullet(PeaShooter);
-        void move();
-        void alive();
-}
+        static int moveTime;
+        static int damage;
+        PeaBullet(int y, int x);
+        ~PeaBullet();
+        void fly();
+        void live();
+        void die();
+};

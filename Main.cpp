@@ -7,18 +7,20 @@
 #include <unistd.h>
 #include <ncurses.h>
 
-int CURRENTX = 0, CURRENTY = 0, WIDTH = 80, HEIGHT = 5, TOP = 0, LEFT = 0, STEP = 0;
-Unit* units[1000];
-
 using namespace std;
 
-void start() {
+int CURRENTX = 0, CURRENTY = 0, WIDTH = 80, HEIGHT = 5, TOP = 0, LEFT = 0, STEP = 0, AMOUNT = 0;
+Unit* UNITS[1000];
+
+void init() {
     Drawer::drawStage(WIDTH, HEIGHT, '@');
-    units[0] = new Zombie(2);
+    UNITS[0] = new Zombie(2);
+    UNITS[1] = new PeaShooter(1, 2);
 }
 
 void animate() {
-    units[0]->live();
+    UNITS[0]->live();
+    UNITS[1]->live();
 }
 
 void keyHandling(int ch) {
@@ -57,7 +59,7 @@ int main() {
     keypad(stdscr, TRUE);
     nodelay(stdscr, TRUE);
     noecho();
-    start();
+    init();
     run();
 	endwin();
 	return 0;

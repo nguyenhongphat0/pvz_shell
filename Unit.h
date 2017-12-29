@@ -4,12 +4,15 @@ class Unit {
     protected:
         int x, y, hp;
         char symbol;
-        bool isPlant;
 
     public:
-        Unit(int x, int y, int hp, char symbol, bool isPlant);
+        bool isPlant;
+        Unit(int y, int x, int hp, char symbol, bool isPlant);
+        void bindToScreen();
+        void dropFromScreen();
+        void takeDamage(int x);
+        bool isHit(int x, int y);
         bool isAlive();
         virtual void live();
-        virtual void bindToScreen();
-        virtual void dropFromScreen();
+        virtual void die();
 };
