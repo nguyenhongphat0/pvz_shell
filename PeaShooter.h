@@ -1,16 +1,21 @@
 #pragma once
 #include "Unit.h"
-#include "PeaBullet.h"
+#include "Bullet.h"
 
 class PeaShooter: public Unit {
     protected:
-        PeaBullet* bullets[100];
-        int shoted;
+        Bullet* bullets[100];
+        int shoted, latency;
 
     public:
         static int maxHp;
         static int rechargeTime;
-        PeaShooter(int x, int y);
+        static char bulletSymbol;
+        static int bulletMoveTime;
+        static int bulletDamage;
+        static int coolDownTime;
+        static int currentCoolDown;
+        PeaShooter(int y, int x);
         void attack();
         void live();
 };

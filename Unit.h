@@ -1,17 +1,16 @@
 #pragma once
 
+enum UnitType {PLANT, ZOMBIE, BULLET};
+
 class Unit {
-    protected:
+    public:
         int x, y, hp;
         char symbol;
-
-    public:
-        bool isPlant;
-        Unit(int y, int x, int hp, char symbol, bool isPlant);
+        UnitType unitType;
+        Unit(int y, int x, int hp, char symbol, UnitType unitType);
         void bindToScreen();
         void dropFromScreen();
         void takeDamage(int x);
-        bool isHit(int x, int y);
         bool isAlive();
         virtual void live();
         virtual void die();

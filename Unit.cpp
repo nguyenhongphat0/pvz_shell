@@ -2,22 +2,17 @@
 #include "Global.h"
 #include <ncurses.h>
 
-Unit::Unit(int y, int x, int hp, char symbol, bool isPlant) {
-    this->y = TOP + y;
-    this->x = LEFT + x;
+Unit::Unit(int y, int x, int hp, char symbol, UnitType unitType) {
+    this->y = y;
+    this->x = x;
     this->hp = hp;
     this->symbol = symbol;
-    this->isPlant = isPlant;
-    this->bindToScreen();
+    this->unitType = unitType;
 }
 
 void Unit::takeDamage(int x) {
     hp -= x;
     if (!isAlive()) die();
-}
-
-bool Unit::isHit(int x, int y) {
-    return this->x == x && this->y == y;
 }
 
 bool Unit::isAlive() {
@@ -26,7 +21,9 @@ bool Unit::isAlive() {
 
 void Unit::live() {}
 
-void Unit::die() {}
+void Unit::die() {
+    dropFromScreen();
+}
 
 void Unit::bindToScreen() {
     mvaddch(y, x, symbol);
@@ -34,6 +31,7 @@ void Unit::bindToScreen() {
 }
 
 void Unit::dropFromScreen() {
-    mvaddch(y, x, ' ');
+    if (mvinch(y, x) == symbol) mvaddch(y, x, ' ');
+    symbol = ' ';
     move(CURRENTY, CURRENTX);
 }

@@ -22,3 +22,19 @@ void Drawer::moveToCenter() {
     CURRENTY = TOP + HEIGHT / 2;
     move(CURRENTY, CURRENTX);
 }
+
+void Drawer::drawRectangle(int top, int left, int height, int width, char ch) {
+    for (int i = top; i < top + height; i++) {
+        move(i, left);
+        for (int i = left; i < left + width; i++) {
+            addch(ch);
+        }
+    }
+    move(CURRENTY, CURRENTX);
+}
+
+void Drawer::drawText(int y, int x, std::string text) {
+    move(y, x);
+    printw(text.c_str());
+    move(CURRENTY, CURRENTX);
+}

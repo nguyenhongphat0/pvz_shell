@@ -8,11 +8,25 @@
 using namespace std;
 
 int Zombie::maxHp = 10;
-int Zombie::walkTime = 1;
+int Zombie::walkTime = 10;
+int Zombie::damage = 1;
 
-Zombie::Zombie(int y): Unit(y, WIDTH - 1, Zombie::maxHp, 'Z', true) {};
+Zombie::Zombie(int y): Unit(TOP + y, LEFT + WIDTH - 1, Zombie::maxHp, 'z', ZOMBIE) {
+    this->bindToScreen();
+};
 
 void Zombie::walk() {
+    for (int i = 0; i < MAXAMOUNT; i++) {
+        if (UNITS[i] != NULL && UNITS[i]->isAlive() && UNITS[i]->y == y && UNITS[i]->x == x - 1) {
+            if (UNITS[i]->unitType == PLANT) {
+                UNITS[i]->takeDamage(damage);
+                return; 
+            }
+            if (UNITS[i]->unitType == BULLET) {
+                return;
+            }
+        }
+    }
     x--;
     mvaddch(y, x, symbol);
     addch(' ');
@@ -24,15 +38,18 @@ void Zombie::live() {
         if (x > LEFT) {
             if (STEP % walkTime == 0) walk();
         } else {
+            if (ISLOSED) return;
+            ISLOSED = true;
             Drawer::moveToCenter();
             printw("  YOU LOSE");
             Drawer::moveToCenter();
             refresh();
+            die();
         }
     }
 }
 
 void Zombie::die() {
     dropFromScreen();
-    delete this;
+    hp = 0;
 }
