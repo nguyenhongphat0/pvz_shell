@@ -8,5 +8,4 @@ class Bullet: public Unit {
         Bullet(int y, int x, char symbol, int damage, int moveTime);
         void fly();
         void live();
-        void die();
 };

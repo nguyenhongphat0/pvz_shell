@@ -31,8 +31,3 @@ void Bullet::live() {
         die();
     }
 }
-
-void Bullet::die() {
-    dropFromScreen();
-    hp = 0;
-}

@@ -38,3 +38,12 @@ void Drawer::drawText(int y, int x, std::string text) {
     printw(text.c_str());
     move(CURRENTY, CURRENTX);
 }
+
+void Drawer::cleanUpChar(char ch) {
+    for (int i = 0; i < TOP + HEIGHT; i++) {
+        for (int j = 0; j < LEFT + WIDTH; j++) {
+            if (mvinch(i, j) == ch) mvaddch(i, j, ' ');
+        }
+    }
+    move(CURRENTY, CURRENTX);
+}

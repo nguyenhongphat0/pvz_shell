@@ -11,7 +11,7 @@ int Zombie::maxHp = 10;
 int Zombie::walkTime = 10;
 int Zombie::damage = 1;
 
-Zombie::Zombie(int y): Unit(TOP + y, LEFT + WIDTH - 1, Zombie::maxHp, 'z', ZOMBIE) {
+Zombie::Zombie(int y): Unit(TOP + y, LEFT + WIDTH - 1, Zombie::maxHp, 'Z', ZOMBIE) {
     this->bindToScreen();
 };
 
@@ -47,9 +47,4 @@ void Zombie::live() {
             die();
         }
     }
-}
-
-void Zombie::die() {
-    dropFromScreen();
-    hp = 0;
 }

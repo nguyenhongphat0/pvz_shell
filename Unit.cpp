@@ -23,6 +23,7 @@ void Unit::live() {}
 
 void Unit::die() {
     dropFromScreen();
+    hp = 0;
 }
 
 void Unit::bindToScreen() {

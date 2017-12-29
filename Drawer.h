@@ -7,4 +7,5 @@ class Drawer {
         static void moveToCenter();
         static void drawRectangle(int top, int left, int height, int width, char ch);
         static void drawText(int y, int x, std::string text);
+        static void cleanUpChar(char ch);
 };

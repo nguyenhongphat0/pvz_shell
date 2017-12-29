@@ -12,7 +12,7 @@ int PeaShooter::bulletMoveTime = 1;
 int PeaShooter::coolDownTime = 5;
 int PeaShooter::currentCoolDown = 0;
 
-PeaShooter::PeaShooter(int y, int x): Unit(y, x, PeaShooter::maxHp, 'p', PLANT) {
+PeaShooter::PeaShooter(int y, int x): Unit(y, x, PeaShooter::maxHp, 'P', PLANT) {
     shoted = 0;
     latency = STEP % rechargeTime;
     this->bindToScreen();

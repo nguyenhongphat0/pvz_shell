@@ -10,5 +10,4 @@ class Zombie: public Unit {
         Zombie(int y);
         void walk();
         void live();
-        void die();
 };
