@@ -4,9 +4,9 @@
 #include <ncurses.h>
 
 int CherryBomb::maxHp = 3;
-int CherryBomb::coolDownTime = 8;
+int CherryBomb::coolDownTime = 2;
 int CherryBomb::currentCoolDown = 0;
-int CherryBomb::lockTime = 30;
+int CherryBomb::lockTime = 99;
 int CherryBomb::explodeTime = 3;
 int CherryBomb::widthRadius = 3;
 int CherryBomb::heightRadius = 1;

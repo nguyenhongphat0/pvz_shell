@@ -29,7 +29,7 @@ int randomNumber(int from, int to) {
 
 void init() {
     srand(time(NULL));
-    Drawer::drawStage(WIDTH, HEIGHT, '@');
+    Drawer::drawStage(WIDTH, HEIGHT, '%');
 }
 
 void animate() {
